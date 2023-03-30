@@ -1,2 +1,61 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+  <h2>User info</h2>
+  <%= image_tag @user.get_profile_image(100,100) %>
+    <table class="user-info">
+      <tbody>
+        <tr></tr>
+        <tr>
+          <th>name</th>
+          <th><%= @user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <!--自己紹介文の内容を反映させる-->
+          <th></th>
+        </tr>
+      </body>
+    </table>
+  
+  <div>
+    <!--ユーザー編集画面へのリンク-->
+  </div>
+
+  <h2 class="newbook">New book</h2>
+  <%= form_with model: @book do |f| %>
+    <label for="book-title">Title</label>
+      <%= f.text_field :title %>
+    <label for="book-opinion">Opinion</label>
+      <%= f.text_area :body %>
+      <%= f.submit 'Create Book' %>
+  <% end %>
+
+  <h2>Book detail</h2>
+  <div class="book-detail">
+    <table class="table-detail">
+      <tbody>
+        <tr>
+          <td>
+            <a>
+              <!--選択したユーザーの詳細画面へのリンクを作る-->
+              <%= image_tag 'sample-author1.jpg' %>
+              <%= @book.user.name %>
+            </a>
+          </td>
+          <td>
+            <%= link_to books_path do %>
+              <%= @book.title %>
+            <% end %>
+          </td>
+          <td>
+            <%= @book.body %>
+          </td>
+          <td>
+          </td>
+          <td>
+            <% if @book.user == current_user %>
+              <%= link_to "Destroy", book_path(@book), method: :delete %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
