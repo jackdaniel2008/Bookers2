@@ -14,11 +14,11 @@
         </tr>
       </body>
     </table>
-  
+
   <div>
-    <!--ユーザー編集画面へのリンク-->
+    <%= link_to "フォントオーサムのアイコン", edit_user_path(@user) %>
   </div>
-  
+
   <h2 class="newbook">New book</h2>
   <%= form_with model: @book do |f| %>
     <label for="book-title">Title</label>
@@ -37,20 +37,20 @@
           <th colspan="3"></th>
         </tr>
       </thead>
-      <% @books.each do |book| %>
-      <div class="book-index">
+      <% @users.each do |user| %>
+      <div class="user-index">
         <tbody>
           <tr>
             <td>
-              <!--ユーザー画像(今はサンプル)-->
-              <%= image_tag 'sample-author1.jpg' %>
+              <%= image_tag user.get_profile_image(100,100) %>
             </td>
             <td>
-              <%= book.user.name %>
+              <%= user.name %>
             </td>
             <td>
-              <!--選択したユーザーの詳細画面へのリンク-->
-              <!--<%= link_to "Show", _path %>-->
+              <%= link_to user_path(user) do %>
+                <%= "Show" %>
+              <% end %>
             </td>
           </tr>
         </tbody>
