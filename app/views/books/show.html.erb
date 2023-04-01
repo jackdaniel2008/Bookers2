@@ -9,8 +9,7 @@
         </tr>
         <tr>
           <th>introduction</th>
-          <!--自己紹介文の内容を反映させる-->
-          <th></th>
+          <th><%= @user.introduction %></th>
         </tr>
       </body>
     </table>
@@ -37,22 +36,22 @@
             <a>
               <!--選択したユーザーの詳細画面へのリンクを作る-->
               <%= image_tag 'sample-author1.jpg' %>
-              <%= @book.user.name %>
+              <%= @book_id.user.name %>
             </a>
           </td>
           <td>
             <%= link_to books_path do %>
-              <%= @book.title %>
+              <%= @book_id.title %>
             <% end %>
           </td>
           <td>
-            <%= @book.body %>
+            <%= @book_id.body %>
           </td>
           <td>
           </td>
           <td>
-            <% if @book.user == current_user %>
-              <%= link_to "Destroy", book_path(@book), method: :delete %>
+            <% if @book_id.user == current_user %>
+              <%= link_to "Destroy", book_path(@book_id), method: :delete %>
             <% end %>
           </td>
         </tr>

@@ -9,8 +9,7 @@
         </tr>
         <tr>
           <th>introduction</th>
-          <!--自己紹介文の内容を反映させる-->
-          <th></th>
+          <th><%= @user.introduction %></th>
         </tr>
       </body>
     </table>
@@ -48,7 +47,7 @@
               <%= user.name %>
             </td>
             <td>
-              <%= link_to user_path(user) do %>
+              <%= link_to user_path(user.id) do %>
                 <%= "Show" %>
               <% end %>
             </td>
