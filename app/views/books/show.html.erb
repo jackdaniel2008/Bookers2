@@ -48,6 +48,9 @@
             <%= @book_id.body %>
           </td>
           <td>
+            <% if @book_id.user == current_user %>
+              <%= link_to "Edit", edit_book_path %>
+            <% end %>
           </td>
           <td>
             <% if @book_id.user == current_user %>
