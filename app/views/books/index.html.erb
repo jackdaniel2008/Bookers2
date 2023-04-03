@@ -1,22 +1,13 @@
-  <h2>User info</h2>
-  <%= image_tag @user.get_profile_image(100,100) %>
-    <table class="user-info">
-      <tbody>
-        <tr></tr>
-        <tr>
-          <th>name</th>
-          <th><%= @user.name %></th>
-        </tr>
-        <tr>
-          <th>introduction</th>
-          <th><%= @user.introduction %></th>
-        </tr>
-      </body>
-    </table>
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>errors prohibited this obj from being saved:
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-  <div>
-    <%= link_to "フォントオーサムのアイコン", edit_user_path(@user) %>
-  </div>
+  <%= render 'user_info', user: @user %>
 
   <h2 class="newbook">New book</h2>
   <%= form_with model: @book do |f| %>
@@ -42,8 +33,7 @@
         <tbody>
           <tr>
             <td>
-              <!--ユーザー画像(今はサンプル)-->
-              <%= image_tag 'sample-author1.jpg' %>
+              <%= image_tag book.user.get_profile_image(100,100) %>
             </td>
             <td>
               <%= link_to book_path(book.id) do %>
