@@ -1,5 +1,5 @@
   <%= render 'books/user_info', user: @user, book: @book %>
-  
+
   <h2 class="newbook">New book</h2>
   <%= form_with model: @book do |f| %>
     <label for="book-title">Title</label>
@@ -37,4 +37,5 @@
         </tbody>
       </div>
       <% end %>
+      <%= paginate @users %>
     </table>

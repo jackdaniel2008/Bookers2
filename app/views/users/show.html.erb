@@ -1,7 +1,7 @@
   <div>
     <%= flash[:notice] %>
   </div>
-  
+
   <%= render 'books/user_info', user: @user, book: @book %>
 
   <h2 class="newbook">New book</h2>
@@ -42,6 +42,7 @@
         </tbody>
       </div>
       <% end %>
+      <%= paginate @books %>
     </table>
 
 
