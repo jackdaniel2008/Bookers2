@@ -2,12 +2,12 @@ class BooksController < ApplicationController
   def index
     @user = current_user
     @book = Book.new
-    @books = Book.page(params[:page])
+    @books = Book.all
   end
 
   def create
     @user = current_user
-    @books = Book.all
+    @books = Book.page(params[:page])
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
